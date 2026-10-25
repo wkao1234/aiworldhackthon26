@@ -1,0 +1,43 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-010-SOURCE-2",
+    "kind": "other",
+    "pbcCode": "PBC-010",
+    "sourceSystem": "source control",
+    "originalFilename": "PBC-010-SOURCE-2.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-PBC-010-SOURCE-2-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "area": "Change-management samples for financial applications",
+    "scenario": {
+      "changes": [
+        {
+          "id": "DEMO-CHG-101",
+          "approved": "2025-12-10",
+          "tested": "2025-12-11",
+          "deployed": "2025-12-12",
+          "rollback": "Restore fictional release 1.0",
+          "emergency": false
+        }
+      ],
+      "populationCount": 1,
+      "sourceCommit": "fictional-demo-commit",
+      "segregationConflicts": 0
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

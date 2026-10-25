@@ -1,0 +1,44 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-007-SOURCE-1",
+    "kind": "other",
+    "pbcCode": "PBC-007",
+    "sourceSystem": "Payroll system",
+    "originalFilename": "PBC-007-SOURCE-1.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-PBC-007-SOURCE-1-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "area": "Payroll reconciliation and employee samples",
+    "scenario": {
+      "runs": [
+        "DEMO-REG-12",
+        "DEMO-OFFCYCLE-12"
+      ],
+      "grossPay": "70000.00",
+      "deductions": "20000.00",
+      "netPay": "50000.00",
+      "glPayrollCost": "70000.00",
+      "paymentControlTotal": "50000.00",
+      "sampleEmployeeIds": [
+        "DEMO-E001",
+        "DEMO-E002"
+      ],
+      "personalData": "Fictional identifiers only; no dates of birth, bank details or real employees."
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

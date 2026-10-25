@@ -1,0 +1,32 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "REC-OP-SIGNOFF",
+    "kind": "other",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "Treasury management system",
+    "originalFilename": "REC-OP-SIGNOFF.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-REC-OP-SIGNOFF-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=OPERATING-001",
+    "entity": "DEMOCO",
+    "account": "OPERATING-001",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "reconciliation": "REC-OP",
+    "preparedBy": "Alex Morgan (fictional)",
+    "reviewedBy": "Taylor Chen (fictional)",
+    "reviewedAt": "2026-01-07",
+    "decision": "Simulated source review only; final audit pack signoff remains blank.",
+    "intentional_exception": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-009-SOURCE-3",
+    "kind": "other",
+    "pbcCode": "PBC-009",
+    "sourceSystem": "HRIS",
+    "originalFilename": "PBC-009-SOURCE-3.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-PBC-009-SOURCE-3-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "area": "Financial-system user-access review",
+    "scenario": {
+      "users": [
+        {
+          "id": "DEMO-U001",
+          "hrStatus": "Active",
+          "privileged": true
+        },
+        {
+          "id": "DEMO-U002",
+          "hrStatus": "Terminated",
+          "terminationDate": "2025-12-15",
+          "removedDate": "2026-01-04",
+          "ticket": "DEMO-IAM-22"
+        }
+      ],
+      "exception": "A leaver retained access past termination; removal was late."
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "REC-PAY-GL",
+    "kind": "gl",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "ERP cash module",
+    "originalFilename": "REC-PAY-GL.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-REC-PAY-GL-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=PAYROLL-002",
+    "entity": "DEMOCO",
+    "account": "PAYROLL-002",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Sam Ellis - GL accounting (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Jamie Brooks - Controller (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "49900.00",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "openingBalance": "50000.00",
+    "journals": [
+      {
+        "reference": "DEMO-JE-201",
+        "debit": "0.00",
+        "credit": "100.00",
+        "description": "Fee adjustment omitted from reconciliation"
+      }
+    ],
+    "closingBalance": "49900.00"
+  }
+}
