@@ -1,0 +1,51 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-006-SOURCE-1",
+    "kind": "other",
+    "pbcCode": "PBC-006",
+    "sourceSystem": "ERP general ledger",
+    "originalFilename": "PBC-006-SOURCE-1.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-PBC-006-SOURCE-1-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "area": "Manual journal-entry population and samples",
+    "scenario": {
+      "populationCount": 3,
+      "manualCount": 3,
+      "debits": "32500.00",
+      "credits": "32500.00",
+      "entries": [
+        {
+          "id": "DEMO-MJE-01",
+          "amount": "30000.00"
+        },
+        {
+          "id": "DEMO-MJE-02",
+          "amount": "2000.00"
+        },
+        {
+          "id": "DEMO-MJE-03",
+          "amount": "500.00"
+        }
+      ],
+      "lateEntries": 0,
+      "preparer": "Alex Morgan (fictional)",
+      "approver": "Taylor Chen (fictional)"
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

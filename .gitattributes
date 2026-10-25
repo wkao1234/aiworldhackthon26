@@ -1,0 +1,2 @@
+# Mock evidence hashes must survive Windows and Linux checkouts unchanged.
+public/demo/** -text

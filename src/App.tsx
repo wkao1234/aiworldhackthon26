@@ -16,7 +16,8 @@ import {
   type PbcAssessment,
   type Result,
 } from "./model";
-import { demoPack, templatePack } from "./sample";
+import { templatePack } from "./sample";
+import { loadDemoDataset } from "./demo";
 
 const identity = () => ({
   id: `AP-${new Date().toISOString().slice(0, 10).replaceAll("-", "")}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`,
@@ -84,6 +85,8 @@ export default function App() {
   );
   const pendingHashes = useRef(0);
   const inputGeneration = useRef(0);
+  const demoLoadVersion = useRef(0);
+  const [demoLoading, setDemoLoading] = useState(false);
   const [revision, setRevision] = useState(identity);
   const [editor, setEditor] = useState(() =>
     JSON.stringify(templatePack(), null, 2),
@@ -192,6 +195,7 @@ export default function App() {
   }
   async function attach(id: string, file: File | undefined) {
     if (!file) return;
+    inputGeneration.current += 1;
     const epoch = attachmentEpoch.current;
     const version = (attachmentVersions.current[id] || 0) + 1;
     attachmentVersions.current[id] = version;
@@ -228,6 +232,7 @@ export default function App() {
     }
   }
   function detach(id: string) {
+    inputGeneration.current += 1;
     attachmentVersions.current[id] = (attachmentVersions.current[id] || 0) + 1;
     delete fileStore.current[id];
     setAttachments((current) => {
@@ -297,6 +302,31 @@ export default function App() {
       "audit-pack-template.json",
       "application/json",
     );
+  }
+
+  async function exploreDemo() {
+    const generation = ++inputGeneration.current;
+    const loadVersion = ++demoLoadVersion.current;
+    setDemoLoading(true);
+    setErrors([]);
+    try {
+      const demo = await loadDemoDataset();
+      if (generation !== inputGeneration.current) return;
+      commit(demo.pack, true);
+      fileStore.current = demo.files;
+      setAttachments(demo.attachments);
+      setNotice(
+        `Synthetic demo loaded with ${demo.pack.evidence.length} hashed mock source files. Review the deliberate exceptions, then export PDF and XLSX.`,
+      );
+    } catch (error) {
+      if (generation !== inputGeneration.current) return;
+      setErrors([error instanceof Error ? error.message : String(error)]);
+      setNotice(
+        "Demo could not be loaded. Your previous working pack is unchanged.",
+      );
+    } finally {
+      if (loadVersion === demoLoadVersion.current) setDemoLoading(false);
+    }
   }
 
   return (
@@ -376,15 +406,21 @@ export default function App() {
                 </a>
                 <button
                   className="button secondary"
-                  onClick={() => {
-                    commit(demoPack(), true);
-                    setNotice(
-                      "Synthetic demo loaded. No real files are attached.",
-                    );
-                  }}
+                  onClick={exploreDemo}
+                  disabled={Boolean(busy) || demoLoading}
                 >
-                  Explore synthetic demo <span>↗</span>
+                  {demoLoading
+                    ? "Loading mock sources…"
+                    : "Explore synthetic demo"}{" "}
+                  <span>↗</span>
                 </button>
+                <a
+                  className="button secondary"
+                  href={`${import.meta.env.BASE_URL}demo/ledgerline-demo-dataset.zip`}
+                  download
+                >
+                  Download demo dataset <span>↓</span>
+                </a>
               </div>
             </div>
             <div className="hero-art" aria-hidden="true">
@@ -406,8 +442,8 @@ export default function App() {
             <div className="demo-banner">
               <strong>◈ SYNTHETIC DEMO</strong>
               <span>
-                Examples only. The exports carry this marker; no real evidence
-                is attached.
+                Fictional data and source files only. Includes deliberate
+                exceptions; all exports are marked synthetic.
               </span>
               <button
                 onClick={() => {
@@ -1151,7 +1187,7 @@ export default function App() {
                 </p>
                 <button
                   className="button primary"
-                  disabled={Boolean(busy)}
+                  disabled={Boolean(busy) || demoLoading}
                   onClick={() => void exportPack("pdf")}
                 >
                   Download PDF <span>↗</span>
@@ -1167,7 +1203,7 @@ export default function App() {
                 </p>
                 <button
                   className="button dark"
-                  disabled={Boolean(busy)}
+                  disabled={Boolean(busy) || demoLoading}
                   onClick={() => void exportPack("xlsx")}
                 >
                   Download XLSX <span>↗</span>

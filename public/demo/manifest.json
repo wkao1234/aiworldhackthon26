@@ -1,0 +1,162 @@
+{
+  "BANK-ROSTER": {
+    "file": "sources/BANK-ROSTER.json",
+    "sha256": "a97b3ee2f7ac3cec8b752af37e70f5100e4c418a1cbe59bd4a089bc00349ff92"
+  },
+  "REC-OP-REC": {
+    "file": "sources/REC-OP-REC.json",
+    "sha256": "2254e2ecc359b5a8f04f6dc5a7f89c62f834c4b3fe443b2ef00a16ae5fcd9487"
+  },
+  "REC-OP-BANK": {
+    "file": "sources/REC-OP-BANK.json",
+    "sha256": "ec1cb5abb329fdf6c6c5dbaf2b371b2a401a9195baaa262411c487e7cb74cbf5"
+  },
+  "REC-OP-GL": {
+    "file": "sources/REC-OP-GL.json",
+    "sha256": "96ced7d888a31dc44674d0f0271e104d58785d421a495fd85aef79c6e7b99e41"
+  },
+  "REC-OP-SIGNOFF": {
+    "file": "sources/REC-OP-SIGNOFF.json",
+    "sha256": "2d9ef8872bdfc0e651dc6d06ef276cce64185826b29042a9a94f724fe868c41c"
+  },
+  "REC-PAY-REC": {
+    "file": "sources/REC-PAY-REC.json",
+    "sha256": "57bb4971c0d4191e6d6531911c41b1627100196a08478ef3f1faeefa3ddef209"
+  },
+  "REC-PAY-BANK": {
+    "file": "sources/REC-PAY-BANK.json",
+    "sha256": "13ffa492be5fa33b3d49e2778978414ff0e13be2ea05a78f6717c36564d1eb57"
+  },
+  "REC-PAY-GL": {
+    "file": "sources/REC-PAY-GL.json",
+    "sha256": "2fad1b79f6ca1b72eba62e29a8f732bd233f954786ef67133052c4ff1ea10248"
+  },
+  "REC-PAY-SIGNOFF": {
+    "file": "sources/REC-PAY-SIGNOFF.json",
+    "sha256": "dbf8de78b6bc933470c275052b54558e684650199ca0fd8fcaae8ed0334af429"
+  },
+  "OP-SUPPORT": {
+    "file": "sources/OP-SUPPORT.json",
+    "sha256": "4eccfc5e3fe05b208bf2afd885a577dd1a5b244fad0921323b8f64b9ca895af8"
+  },
+  "PBC-001-SOURCE-1": {
+    "file": "sources/PBC-001-SOURCE-1.json",
+    "sha256": "0b3e3408c7e08962460d7fd7f135f684b5d864607bf590ca74e8630df8dc8f43"
+  },
+  "PBC-001-SOURCE-2": {
+    "file": "sources/PBC-001-SOURCE-2.json",
+    "sha256": "c81143fc65ca92692cdbeb2d59336c1ce782c3da08d7038c33fef981fd3675ab"
+  },
+  "PBC-003-SOURCE-1": {
+    "file": "sources/PBC-003-SOURCE-1.json",
+    "sha256": "145de903c4826ec045e9fcc37f68fe3048ed2c18059b47a59005f53bf1d029c7"
+  },
+  "PBC-003-SOURCE-2": {
+    "file": "sources/PBC-003-SOURCE-2.json",
+    "sha256": "10d7c6e1f9aeaef2243a570ccd89daab2110ca8df9d7787307d4d5388d313aa1"
+  },
+  "PBC-003-SOURCE-3": {
+    "file": "sources/PBC-003-SOURCE-3.json",
+    "sha256": "445871363362830edfb046a4ddf7133c9a26e52007e80711bff33aa3f8290b92"
+  },
+  "PBC-004-SOURCE-1": {
+    "file": "sources/PBC-004-SOURCE-1.json",
+    "sha256": "8885e8d756da17fea15f2b709f1b1cd7d66a2ca1ba48c3e0c1943d7274e4b8e3"
+  },
+  "PBC-004-SOURCE-2": {
+    "file": "sources/PBC-004-SOURCE-2.json",
+    "sha256": "6f721facf4713b4541c18f7cc808f87832fc5efca8caa898bb77628c85c61863"
+  },
+  "PBC-004-SOURCE-3": {
+    "file": "sources/PBC-004-SOURCE-3.json",
+    "sha256": "a77693dd89e2914f737e873eefb035250e9ed5cecbc83baf2471cc36e54b54ba"
+  },
+  "PBC-005-SOURCE-1": {
+    "file": "sources/PBC-005-SOURCE-1.json",
+    "sha256": "9133423d4b3fe2c0ddfcedee11db674cf65bd3f2a8385651baa67150c1b1b0f4"
+  },
+  "PBC-005-SOURCE-2": {
+    "file": "sources/PBC-005-SOURCE-2.json",
+    "sha256": "e043f3ce40936985842b7dd6490b1a778716457b7c12f034e8d0778e9b9934b0"
+  },
+  "PBC-005-SOURCE-3": {
+    "file": "sources/PBC-005-SOURCE-3.json",
+    "sha256": "42c42e600efb582bf68d1897a01acba402094dd9eb9ba1ecae64407c6a76912a"
+  },
+  "PBC-006-SOURCE-1": {
+    "file": "sources/PBC-006-SOURCE-1.json",
+    "sha256": "fc954bb4d3734271c334ab3c5715013ceda948d7ac5fb47470416098c28e0e15"
+  },
+  "PBC-006-SOURCE-2": {
+    "file": "sources/PBC-006-SOURCE-2.json",
+    "sha256": "18b2a32c2843a6ee928ed852f61bcef825a6ab78343b1549fee9fb3da0060398"
+  },
+  "PBC-006-SOURCE-3": {
+    "file": "sources/PBC-006-SOURCE-3.json",
+    "sha256": "903b1fc1433080799006f7e6a9889ba7a26cda4981da7dd6fec43f8b74a77131"
+  },
+  "PBC-007-SOURCE-1": {
+    "file": "sources/PBC-007-SOURCE-1.json",
+    "sha256": "087f9c1756e87c0240f3e03859abe8a27adafb1c0db484796ba8297019497f00"
+  },
+  "PBC-007-SOURCE-2": {
+    "file": "sources/PBC-007-SOURCE-2.json",
+    "sha256": "65b28799bc36f32ce22e4e9622bda9ec1fc80d51ea1ef05fa2d0dcabb2fffcbe"
+  },
+  "PBC-007-SOURCE-3": {
+    "file": "sources/PBC-007-SOURCE-3.json",
+    "sha256": "4dc0681c92d6d70d4c0184e933dae0c06aa79edcd61d5d4103dbde9bdc8c3528"
+  },
+  "PBC-007-SOURCE-4": {
+    "file": "sources/PBC-007-SOURCE-4.json",
+    "sha256": "92b0a5961f42358d319925ae7cedfaf4b2872081875b765e3e5c4883bbc5ff2a"
+  },
+  "PBC-008-SOURCE-1": {
+    "file": "sources/PBC-008-SOURCE-1.json",
+    "sha256": "b2424a1bc95b8fb0cf6dfab8e2773679a0fc66c4f4a913672b98666ee7848e3b"
+  },
+  "PBC-008-SOURCE-2": {
+    "file": "sources/PBC-008-SOURCE-2.json",
+    "sha256": "09e9c7e9534a7847f760fbc1f2ceeb7a7b2f22ee9e623f150b925033af9e0fba"
+  },
+  "PBC-008-SOURCE-3": {
+    "file": "sources/PBC-008-SOURCE-3.json",
+    "sha256": "88c2efc635db91277a8e8d2c1c8b0404b0e22d995ad88873924abdefcb4ee72a"
+  },
+  "PBC-008-SOURCE-4": {
+    "file": "sources/PBC-008-SOURCE-4.json",
+    "sha256": "e3a3c86e7a876582f5aeed5e27100dde5d6a7063967e51c228a84794711564a8"
+  },
+  "PBC-009-SOURCE-1": {
+    "file": "sources/PBC-009-SOURCE-1.json",
+    "sha256": "ead084cbc045e7ef156c055ef7b32250a3f8cc2d21edec7d46bc7886f03c6c8a"
+  },
+  "PBC-009-SOURCE-2": {
+    "file": "sources/PBC-009-SOURCE-2.json",
+    "sha256": "27428012bf7b71f449b36729819af537fa4e6c0b2e42106680104fd0df1801b5"
+  },
+  "PBC-009-SOURCE-3": {
+    "file": "sources/PBC-009-SOURCE-3.json",
+    "sha256": "0c9947d6a0c5496e520b9321c26bdde2243b5490f272c5233bc6388d5ea9af64"
+  },
+  "PBC-009-SOURCE-4": {
+    "file": "sources/PBC-009-SOURCE-4.json",
+    "sha256": "fbe89632788337282c9103e98ec5adf8e8e9109dbc8afb9b46944514a2c4631d"
+  },
+  "PBC-010-SOURCE-1": {
+    "file": "sources/PBC-010-SOURCE-1.json",
+    "sha256": "b52d9c371d500c35dd405e7671e72dc605e6bedba27fa405b6e7e352553fc519"
+  },
+  "PBC-010-SOURCE-2": {
+    "file": "sources/PBC-010-SOURCE-2.json",
+    "sha256": "ab79f33308d028a91ae70cd6616fbd8468a937a381d45657fe8b83bbc5821aa5"
+  },
+  "PBC-010-SOURCE-3": {
+    "file": "sources/PBC-010-SOURCE-3.json",
+    "sha256": "fe39cbe5fd0b010c58c6a1df8cd45211820c1b546f8646ad909b99310f51a909"
+  },
+  "PBC-010-SOURCE-4": {
+    "file": "sources/PBC-010-SOURCE-4.json",
+    "sha256": "916b8d49457a2c51e1df515f7402ee47b5e54759e5279dfafda15389125fcd40"
+  }
+}

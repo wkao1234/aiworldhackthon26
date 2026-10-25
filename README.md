@@ -28,7 +28,9 @@ Import this GitHub repository into Vercel. Use the Vite preset or set build comm
 5. Review the check ledger and PBC criteria. For nonbank criteria, record a separate human assessment for each statement with checker, date, source evidence IDs, and notes. A single whole-PBC assertion cannot mark all statements passed.
 6. Download the PDF and XLSX from the same current pack snapshot. Any edit changes the shared pack ID and snapshot timestamp. Reviewer signoff fields remain blank until an actual reviewer fills them.
 
-The optional synthetic demo is explicitly marked in the UI and both exports. **Clear demo** removes all demo working data and attachments.
+The optional synthetic demo is explicitly marked in the UI and both exports. **Explore synthetic demo** loads 40 actual fictional source JSON files, validates their SHA-256 hashes, and populates all 17 metadata fields plus 51 simulated human assessments for the nonbank PBC areas. **Download demo dataset** provides the import JSON, source files, hash manifest, and walkthrough in a ZIP. **Clear demo** removes all demo working data and attachments.
+
+The mock dataset deliberately contains a USD 100 payroll reconciliation difference, an unsupported 91-day-old reconciling item, a self-review, a missing reserve-account reconciliation, and late removal of a fictional employee's access. Operating cash provides the supported matching example. All identities and source exports are fictional; nonbank assessments are simulated human decisions, not real audit conclusions. See [demo instructions](public/demo/README.md). Rebuild the deterministic dataset with `python scripts/generate_demo.py`.
 
 ## JSON import schema
 

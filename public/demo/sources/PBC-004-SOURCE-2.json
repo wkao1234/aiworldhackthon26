@@ -1,0 +1,47 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-004-SOURCE-2",
+    "kind": "other",
+    "pbcCode": "PBC-004",
+    "sourceSystem": "procurement tool",
+    "originalFilename": "PBC-004-SOURCE-2.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-PBC-004-SOURCE-2-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "area": "AP ageing and unrecorded liabilities",
+    "scenario": {
+      "glTotal": "42000.00",
+      "invoices": [
+        {
+          "id": "DEMO-AP-101",
+          "amount": "30000.00",
+          "goodsReceived": "2025-12-20",
+          "paid": "2026-01-08"
+        },
+        {
+          "id": "DEMO-AP-102",
+          "amount": "12000.00",
+          "goodsReceived": "2025-12-28",
+          "paid": "2026-01-09"
+        }
+      ],
+      "duplicateInvoices": 0,
+      "unrecordedLiabilities": "0.00"
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

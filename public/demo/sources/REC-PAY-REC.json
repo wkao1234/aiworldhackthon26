@@ -1,0 +1,58 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "REC-PAY-REC",
+    "kind": "reconciliation",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "Treasury management system",
+    "originalFilename": "REC-PAY-REC.json",
+    "version": "SYNTHETIC-v1",
+    "recordId": "DEMO-REC-PAY-REC-202512",
+    "reportParameters": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE; entity=DEMOCO; period=2025-12; currency=USD; account=PAYROLL-002",
+    "entity": "DEMOCO",
+    "account": "PAYROLL-002",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Alex Morgan (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "",
+    "limitations": "Wholly fictional source export and identities. No live system, authenticated approval, or real financial evidence."
+  },
+  "data": {
+    "id": "REC-PAY",
+    "entity": "DEMOCO",
+    "account": "PAYROLL-002",
+    "currency": "USD",
+    "period": "2025-12",
+    "reference": "DEMO-REC-PAY",
+    "bankClosingBalance": "48000.00",
+    "bankAdjustments": "2000.00",
+    "adjustedBankBalance": "50000.00",
+    "glClosingBalance": "49900.00",
+    "reconciliationBalance": "50000.00",
+    "outstandingItems": [
+      {
+        "id": "PAY-1",
+        "amount": "2000.00",
+        "date": "2025-10-01",
+        "support": "",
+        "evidenceId": ""
+      }
+    ],
+    "outstandingPopulationConfirmed": true,
+    "evidenceIds": {
+      "reconciliation": "REC-PAY-REC",
+      "bank": "REC-PAY-BANK",
+      "gl": "REC-PAY-GL"
+    },
+    "preparedBy": "Alex Morgan (fictional)",
+    "preparedAt": "2026-01-06",
+    "reviewedBy": "Alex Morgan (fictional)",
+    "reviewedAt": "2026-01-07",
+    "reviewSignoffEvidenceId": "REC-PAY-SIGNOFF",
+    "owner": "Morgan Patel - Treasury (fictional)"
+  }
+}
