@@ -4,3 +4,11 @@
 node_modules/
 .venv/
 __pycache__/
+dist/
+.qa/
+coverage/
+*.tsbuildinfo
+evidence/
+exports/
+.local/
+*.tsbuildinfo

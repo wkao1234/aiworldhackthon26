@@ -1,0 +1,533 @@
+{
+  "source": "Hackathon PBC & Metadata.xlsx",
+  "sha256": "c9a61aec6827be06d5c819bae863c61e7ba174ecac872b548174afbf85a4f011",
+  "sheets": [
+    {
+      "name": "PBC List",
+      "state": "visible",
+      "dimension": "A1:F11",
+      "cells": [
+        {
+          "cell": "A1",
+          "value": "Item code",
+          "type": "s"
+        },
+        {
+          "cell": "B1",
+          "value": "PBC item",
+          "type": "s"
+        },
+        {
+          "cell": "C1",
+          "value": "Audit area",
+          "type": "s"
+        },
+        {
+          "cell": "D1",
+          "value": "Systems required",
+          "type": "s"
+        },
+        {
+          "cell": "E1",
+          "value": "Example audit evidence",
+          "type": "s"
+        },
+        {
+          "cell": "F1",
+          "value": "Key assurance parameters for audit readiness",
+          "type": "s"
+        },
+        {
+          "cell": "A2",
+          "value": "PBC-001",
+          "type": "s"
+        },
+        {
+          "cell": "B2",
+          "value": "Trial balance and financial statement mapping",
+          "type": "s"
+        },
+        {
+          "cell": "C2",
+          "value": "Financial reporting",
+          "type": "s"
+        },
+        {
+          "cell": "D2",
+          "value": "ERP/general ledger; consolidation and reporting tool",
+          "type": "s"
+        },
+        {
+          "cell": "E2",
+          "value": "Final trial balance; chart-of-accounts mapping; financial statement mapping; approved reporting pack",
+          "type": "s"
+        },
+        {
+          "cell": "F2",
+          "value": "Debits equal credits; all entities and accounts included; trial balance agrees to consolidation and financial statements; no unexplained unmapped accounts; preparer and reviewer approval retained",
+          "type": "s"
+        },
+        {
+          "cell": "A3",
+          "value": "PBC-002",
+          "type": "s"
+        },
+        {
+          "cell": "B3",
+          "value": "Bank reconciliations",
+          "type": "s"
+        },
+        {
+          "cell": "C3",
+          "value": "Cash and treasury",
+          "type": "s"
+        },
+        {
+          "cell": "D3",
+          "value": "Treasury management system; ERP cash module; bank portal",
+          "type": "s"
+        },
+        {
+          "cell": "E3",
+          "value": "December reconciliations; bank statements; GL cash detail; outstanding-item listing; reviewer sign-off",
+          "type": "s"
+        },
+        {
+          "cell": "F3",
+          "value": "All material accounts included; adjusted bank balance equals GL; reconciling items supported; stale items identified; account, currency, and period consistent; independent review documented",
+          "type": "s"
+        },
+        {
+          "cell": "A4",
+          "value": "PBC-003",
+          "type": "s"
+        },
+        {
+          "cell": "B4",
+          "value": "AR ageing and subsequent receipts",
+          "type": "s"
+        },
+        {
+          "cell": "C4",
+          "value": "Revenue and receivables",
+          "type": "s"
+        },
+        {
+          "cell": "D4",
+          "value": "ERP accounts receivable; bank portal; cash-application system",
+          "type": "s"
+        },
+        {
+          "cell": "E4",
+          "value": "AR ageing; customer ledger; invoices; credit notes; bank receipts; remittance advice",
+          "type": "s"
+        },
+        {
+          "cell": "F4",
+          "value": "Ageing generated as at 31 December 2025; totals agree to GL; all open items included; ageing buckets correctly calculated; sampled receipts trace from invoice to bank; disputes and credits identified",
+          "type": "s"
+        },
+        {
+          "cell": "A5",
+          "value": "PBC-004",
+          "type": "s"
+        },
+        {
+          "cell": "B5",
+          "value": "AP ageing and unrecorded liabilities",
+          "type": "s"
+        },
+        {
+          "cell": "C5",
+          "value": "Purchases and payables",
+          "type": "s"
+        },
+        {
+          "cell": "D5",
+          "value": "ERP accounts payable; procurement tool; payment platform",
+          "type": "s"
+        },
+        {
+          "cell": "E5",
+          "value": "AP ageing; vendor ledger; January 2026 payments; invoices; purchase orders; goods receipts; accrual analysis",
+          "type": "s"
+        },
+        {
+          "cell": "F5",
+          "value": "Ageing agrees to GL; post-year-end payment population complete; invoices agree to payments; goods received before year-end assessed for accrual; duplicates investigated; review documented",
+          "type": "s"
+        },
+        {
+          "cell": "A6",
+          "value": "PBC-005",
+          "type": "s"
+        },
+        {
+          "cell": "B6",
+          "value": "Fixed asset roll-forward and additions",
+          "type": "s"
+        },
+        {
+          "cell": "C6",
+          "value": "Property, plant and equipment",
+          "type": "s"
+        },
+        {
+          "cell": "D6",
+          "value": "Fixed asset register; ERP fixed-assets module; procurement tool",
+          "type": "s"
+        },
+        {
+          "cell": "E6",
+          "value": "Asset roll-forward; asset register; invoices; capital approvals; in-service evidence; disposal approvals",
+          "type": "s"
+        },
+        {
+          "cell": "F6",
+          "value": "Opening balance agrees to prior year; additions and disposals supported; closing balance agrees to GL; depreciation recalculates; useful lives and methods documented; recognition dates support proper cut-off",
+          "type": "s"
+        },
+        {
+          "cell": "A7",
+          "value": "PBC-006",
+          "type": "s"
+        },
+        {
+          "cell": "B7",
+          "value": "Manual journal-entry population and samples",
+          "type": "s"
+        },
+        {
+          "cell": "C7",
+          "value": "Journals and management override",
+          "type": "s"
+        },
+        {
+          "cell": "D7",
+          "value": "ERP general ledger; journal workflow; document repository",
+          "type": "s"
+        },
+        {
+          "cell": "E7",
+          "value": "Complete JE population; journal forms; calculations; source support; approval history; posting logs",
+          "type": "s"
+        },
+        {
+          "cell": "F7",
+          "value": "Population is complete; manual entries identifiable; totals reconcile to GL; business rationale and support retained; preparer and approver are segregated; late and post-close entries separately identified",
+          "type": "s"
+        },
+        {
+          "cell": "A8",
+          "value": "PBC-007",
+          "type": "s"
+        },
+        {
+          "cell": "B8",
+          "value": "Payroll reconciliation and employee samples",
+          "type": "s"
+        },
+        {
+          "cell": "C8",
+          "value": "Payroll and employee costs",
+          "type": "s"
+        },
+        {
+          "cell": "D8",
+          "value": "Payroll system; HRIS; ERP general ledger; payment platform",
+          "type": "s"
+        },
+        {
+          "cell": "E8",
+          "value": "Payroll registers; GL reconciliation; employee master data; pay-change approvals; payment control totals",
+          "type": "s"
+        },
+        {
+          "cell": "F8",
+          "value": "All regular and off-cycle runs included; payroll agrees to GL and bank totals; sampled employees agree to HR records; hires, leavers, and pay changes authorized; personal data protected",
+          "type": "s"
+        },
+        {
+          "cell": "A9",
+          "value": "PBC-008",
+          "type": "s"
+        },
+        {
+          "cell": "B9",
+          "value": "Revenue population and contract samples",
+          "type": "s"
+        },
+        {
+          "cell": "C9",
+          "value": "Revenue",
+          "type": "s"
+        },
+        {
+          "cell": "D9",
+          "value": "Billing or revenue subledger; CRM; contract repository; ERP",
+          "type": "s"
+        },
+        {
+          "cell": "E9",
+          "value": "Revenue listing; executed contracts; orders; invoices; delivery or service evidence; recognition calculations; credit notes",
+          "type": "s"
+        },
+        {
+          "cell": "F9",
+          "value": "All material revenue streams included; population agrees to GL; samples agree to contracts and invoices; performance evidence supports recognition; cut-off is correct; modifications and credits assessed",
+          "type": "s"
+        },
+        {
+          "cell": "A10",
+          "value": "PBC-009",
+          "type": "s"
+        },
+        {
+          "cell": "B10",
+          "value": "Financial-system user-access review",
+          "type": "s"
+        },
+        {
+          "cell": "C10",
+          "value": "IT general controls",
+          "type": "s"
+        },
+        {
+          "cell": "D10",
+          "value": "Identity and access management; ERP security; HRIS; service-management tool",
+          "type": "s"
+        },
+        {
+          "cell": "E10",
+          "value": "User listing; privileged-role listing; completed access review; approval record; termination report; removal tickets",
+          "type": "s"
+        },
+        {
+          "cell": "F10",
+          "value": "System-generated population is complete; users agree to HR status; privileged and generic accounts identified; authorized reviewer decisions retained; inappropriate access remediated; removal dates tested",
+          "type": "s"
+        },
+        {
+          "cell": "A11",
+          "value": "PBC-010",
+          "type": "s"
+        },
+        {
+          "cell": "B11",
+          "value": "Change-management samples for financial applications",
+          "type": "s"
+        },
+        {
+          "cell": "C11",
+          "value": "IT general controls",
+          "type": "s"
+        },
+        {
+          "cell": "D11",
+          "value": "IT service-management system; source control; CI/CD platform; testing repository",
+          "type": "s"
+        },
+        {
+          "cell": "E11",
+          "value": "Change population; change tickets; approvals; testing evidence; deployment logs; rollback plans; emergency-change reviews",
+          "type": "s"
+        },
+        {
+          "cell": "F11",
+          "value": "Production-change population complete; approval and testing precede deployment; change agrees to source-control and deployment records; segregation conflicts flagged; emergency changes retrospectively reviewed",
+          "type": "s"
+        }
+      ],
+      "mergedRanges": []
+    },
+    {
+      "name": "Audit pack metadata",
+      "state": "visible",
+      "dimension": "A1:B18",
+      "cells": [
+        {
+          "cell": "A1",
+          "value": "Parameter",
+          "type": "s"
+        },
+        {
+          "cell": "B1",
+          "value": "Purpose",
+          "type": "s"
+        },
+        {
+          "cell": "A2",
+          "value": "Entity and scope",
+          "type": "s"
+        },
+        {
+          "cell": "B2",
+          "value": "Defines the legal entities, business units, accounts, systems, and locations covered",
+          "type": "s"
+        },
+        {
+          "cell": "A3",
+          "value": "Population or sample",
+          "type": "s"
+        },
+        {
+          "cell": "B3",
+          "value": "Identifies whether the evidence represents the full population or selected audit samples",
+          "type": "s"
+        },
+        {
+          "cell": "A4",
+          "value": "Data owner",
+          "type": "s"
+        },
+        {
+          "cell": "B4",
+          "value": "Records the accountable Finance, IT, or business owner",
+          "type": "s"
+        },
+        {
+          "cell": "A5",
+          "value": "Preparer and reviewer",
+          "type": "s"
+        },
+        {
+          "cell": "B5",
+          "value": "Demonstrates preparation and independent review",
+          "type": "s"
+        },
+        {
+          "cell": "A6",
+          "value": "Source system",
+          "type": "s"
+        },
+        {
+          "cell": "B6",
+          "value": "Identifies the authoritative system from which evidence originated",
+          "type": "s"
+        },
+        {
+          "cell": "A7",
+          "value": "Report parameters",
+          "type": "s"
+        },
+        {
+          "cell": "B7",
+          "value": "Records filters, dates, entities, accounts, and other extraction criteria",
+          "type": "s"
+        },
+        {
+          "cell": "A8",
+          "value": "Extraction timestamp",
+          "type": "s"
+        },
+        {
+          "cell": "B8",
+          "value": "Establishes when the evidence was generated",
+          "type": "s"
+        },
+        {
+          "cell": "A9",
+          "value": "Completeness check",
+          "type": "s"
+        },
+        {
+          "cell": "B9",
+          "value": "Demonstrates that all in-scope records are included",
+          "type": "s"
+        },
+        {
+          "cell": "A10",
+          "value": "Accuracy and reconciliation check",
+          "type": "s"
+        },
+        {
+          "cell": "B10",
+          "value": "Connects evidence totals to the GL, subledger, bank, or another authoritative source",
+          "type": "s"
+        },
+        {
+          "cell": "A11",
+          "value": "Cut-off check",
+          "type": "s"
+        },
+        {
+          "cell": "B11",
+          "value": "Confirms transactions and balances relate to the correct accounting period",
+          "type": "s"
+        },
+        {
+          "cell": "A12",
+          "value": "Evidence lineage",
+          "type": "s"
+        },
+        {
+          "cell": "B12",
+          "value": "Traces each audit conclusion from source system through report and supporting documents",
+          "type": "s"
+        },
+        {
+          "cell": "A13",
+          "value": "Exception status",
+          "type": "s"
+        },
+        {
+          "cell": "B13",
+          "value": "Records identified gaps, owners, remediation, and resolution",
+          "type": "s"
+        },
+        {
+          "cell": "A14",
+          "value": "Sensitive-data treatment",
+          "type": "s"
+        },
+        {
+          "cell": "B14",
+          "value": "Documents redaction, masking, encryption, and access restrictions",
+          "type": "s"
+        },
+        {
+          "cell": "A15",
+          "value": "File name and version",
+          "type": "s"
+        },
+        {
+          "cell": "B15",
+          "value": "Prevents ambiguity between draft, revised, and final evidence",
+          "type": "s"
+        },
+        {
+          "cell": "A16",
+          "value": "Preparation and review dates",
+          "type": "s"
+        },
+        {
+          "cell": "B16",
+          "value": "Demonstrates timely completion and review",
+          "type": "s"
+        },
+        {
+          "cell": "A17",
+          "value": "Auditor cross-reference",
+          "type": "s"
+        },
+        {
+          "cell": "B17",
+          "value": "Links each file to the relevant PBC request, control, sample, or workpaper",
+          "type": "s"
+        },
+        {
+          "cell": "A18",
+          "value": "Final status",
+          "type": "s"
+        },
+        {
+          "cell": "B18",
+          "value": "Not started, in progress, exception, audit-ready, submitted, or accepted",
+          "type": "s"
+        }
+      ],
+      "mergedRanges": []
+    }
+  ],
+  "externalLinks": []
+}
