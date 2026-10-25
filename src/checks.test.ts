@@ -51,6 +51,14 @@ const result = (
   )?.result;
 
 describe("bank reconciliation checks", () => {
+  it("does not mistake inherited object keys for attached files", () => {
+    const { pack } = populated();
+    pack.evidence[0].id = "__proto__";
+    const snapshot = createSnapshot(pack, {}, "PACK-TEST", at);
+    expect(
+      snapshot.checks.find((row) => row.id === "EVID-__proto__")?.result,
+    ).toBe("Needs evidence");
+  });
   it("matches distinct imported bank/GL source balances and passes all six bank criteria with evidence", () => {
     const { pack, attachments } = populated();
     const snapshot = createSnapshot(pack, attachments, "PACK-TEST", at);

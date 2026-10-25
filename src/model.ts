@@ -93,6 +93,13 @@ export interface Attachment {
   size: number;
 }
 
+export function getAttachment(
+  attachments: Record<string, Attachment>,
+  id: string,
+): Attachment | undefined {
+  return Object.hasOwn(attachments, id) ? attachments[id] : undefined;
+}
+
 export interface Check {
   id: string;
   pbcCode: string;

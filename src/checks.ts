@@ -1,4 +1,5 @@
 import {
+  getAttachment,
   catalog,
   cents,
   criteria,
@@ -103,7 +104,7 @@ export function createSnapshot(
     if (criterionId) criterionChecks[criterionId].push(check);
     return check;
   };
-  const hasAttachment = (id: string) => Boolean(attachments[id]);
+  const hasAttachment = (id: string) => Boolean(getAttachment(attachments, id));
   const evidenceFields = (record: EvidenceRecord): string[] => {
     const required: (keyof EvidenceRecord)[] = [
       "sourceSystem",
@@ -131,7 +132,7 @@ export function createSnapshot(
   };
 
   for (const record of input.evidence) {
-    const attachment = attachments[record.id];
+    const attachment = getAttachment(attachments, record.id);
     const missing = evidenceFields(record);
     if (!attachment)
       missing.push("actual attached file / computed SHA-256 / capture time");
@@ -713,11 +714,6 @@ export function createSnapshot(
             ) ||
             Boolean(
               input.currency && row.currency && row.currency !== input.currency,
-            ) ||
-            Boolean(
-              row.account &&
-              input.expectedAccounts.length &&
-              !input.expectedAccounts.includes(row.account),
             )),
       );
       const eligible = Boolean(

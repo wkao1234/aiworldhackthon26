@@ -2,6 +2,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import ExcelJS from "exceljs";
 import {
+  getAttachment,
   catalog,
   cents,
   criteria,
@@ -39,7 +40,7 @@ function sourceFootprint(
   snapshot: Snapshot,
 ): string {
   if (!record) return "Missing source record and attached file.";
-  const attachment = snapshot.attachments[record.id];
+  const attachment = getAttachment(snapshot.attachments, record.id);
   const fields = [
     `Evidence ID: ${record.id}`,
     `Source system (source-provided): ${missing(record.sourceSystem)}`,
@@ -344,7 +345,7 @@ export function buildPdf(snapshot: Snapshot): Uint8Array {
         ? row.outstandingItems.map((item) => [
             item.id,
             money(item.amount ? cents(item.amount) : null, row.currency),
-            `${missing(item.date)}; ${missing(item.support)}; ${missing(item.evidenceId)}; ${snapshot.attachments[item.evidenceId] ? "file attached" : "attachment missing"}`,
+            `${missing(item.date)}; ${missing(item.support)}; ${missing(item.evidenceId)}; ${getAttachment(snapshot.attachments, item.evidenceId) ? "file attached" : "attachment missing"}`,
           ])
         : [
             [
@@ -649,9 +650,11 @@ export async function buildXlsx(snapshot: Snapshot): Promise<Uint8Array> {
         .join(", ") || "Missing",
       snapshot.input.evidence
         .filter(
-          (row) => row.pbcCode === item.code && snapshot.attachments[row.id],
+          (row) =>
+            row.pbcCode === item.code &&
+            getAttachment(snapshot.attachments, row.id),
         )
-        .map((row) => snapshot.attachments[row.id].name)
+        .map((row) => getAttachment(snapshot.attachments, row.id)!.name)
         .join(", ") || "Missing",
     ]),
     [16, 24, 42, 30, 60, 70, 100, 22, 35, 42],
@@ -767,7 +770,7 @@ export async function buildXlsx(snapshot: Snapshot): Promise<Uint8Array> {
         item.date || "Missing",
         item.support || "Missing",
         item.evidenceId || "Missing",
-        snapshot.attachments[item.evidenceId]?.name || "Missing",
+        getAttachment(snapshot.attachments, item.evidenceId)?.name || "Missing",
       ]),
     ),
     [24, 24, 24, 20, 18, 65, 30, 35],
@@ -802,7 +805,7 @@ export async function buildXlsx(snapshot: Snapshot): Promise<Uint8Array> {
       "Missing field flags",
     ],
     snapshot.input.evidence.map((row) => {
-      const attachment = snapshot.attachments[row.id];
+      const attachment = getAttachment(snapshot.attachments, row.id);
       const absent = Object.entries(row)
         .filter(
           ([key, value]) =>

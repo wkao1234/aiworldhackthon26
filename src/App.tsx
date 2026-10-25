@@ -4,6 +4,7 @@ import { createSnapshot } from "./checks";
 import { downloadBytes } from "./download";
 import { parsePackJson } from "./import";
 import {
+  getAttachment,
   catalog,
   criteria,
   emptyPack,
@@ -76,10 +77,13 @@ export default function App() {
   const [attachments, setAttachments] = useState<Record<string, Attachment>>(
     {},
   );
-  const fileStore = useRef<Record<string, File>>({});
+  const fileStore = useRef<Record<string, File>>(Object.create(null));
   const attachmentEpoch = useRef(0);
-  const attachmentVersions = useRef<Record<string, number>>({});
+  const attachmentVersions = useRef<Record<string, number>>(
+    Object.create(null),
+  );
   const pendingHashes = useRef(0);
+  const inputGeneration = useRef(0);
   const [revision, setRevision] = useState(identity);
   const [editor, setEditor] = useState(() =>
     JSON.stringify(templatePack(), null, 2),
@@ -119,14 +123,15 @@ export default function App() {
   const attachedCount = Object.keys(attachments).length;
 
   function commit(next: PackInput, clearAttachments = false) {
+    inputGeneration.current += 1;
     setPack(next);
     setRevision(identity());
     setErrors([]);
     setNotice("");
     if (clearAttachments) {
       attachmentEpoch.current += 1;
-      attachmentVersions.current = {};
-      fileStore.current = {};
+      attachmentVersions.current = Object.create(null);
+      fileStore.current = Object.create(null);
       setAttachments({});
     }
     setEditor(JSON.stringify(next, null, 2));
@@ -135,6 +140,7 @@ export default function App() {
     commit({ ...pack, [key]: value });
   }
   function applyEditor() {
+    inputGeneration.current += 1;
     const parsed = parsePackJson(editor);
     if (!parsed.data) {
       setErrors(parsed.errors);
@@ -152,24 +158,37 @@ export default function App() {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
+    const generation = ++inputGeneration.current;
     if (!file.name.toLowerCase().endsWith(".json")) {
       setErrors([
         "Choose a .json structured evidence file. Other formats are not parsed.",
       ]);
       return;
     }
-    const parsed = parsePackJson(await file.text());
-    if (!parsed.data) {
-      setErrors(parsed.errors);
+    try {
+      const contents = await file.text();
+      if (generation !== inputGeneration.current) return;
+      const parsed = parsePackJson(contents);
+      if (!parsed.data) {
+        setErrors(parsed.errors);
+        setNotice(
+          "Import rejected. The previous working pack and attachments are unchanged.",
+        );
+        return;
+      }
+      commit(parsed.data, true);
+      setNotice(
+        `${file.name} imported. Attach each source file to its matching evidence ID.`,
+      );
+    } catch (error) {
+      if (generation !== inputGeneration.current) return;
+      setErrors([
+        `Could not read ${file.name}: ${error instanceof Error ? error.message : String(error)}`,
+      ]);
       setNotice(
         "Import rejected. The previous working pack and attachments are unchanged.",
       );
-      return;
     }
-    commit(parsed.data, true);
-    setNotice(
-      `${file.name} imported. Attach each source file to its matching evidence ID.`,
-    );
   }
   async function attach(id: string, file: File | undefined) {
     if (!file) return;
@@ -654,7 +673,10 @@ export default function App() {
                 <textarea
                   spellCheck={false}
                   value={editor}
-                  onChange={(event) => setEditor(event.target.value)}
+                  onChange={(event) => {
+                    inputGeneration.current += 1;
+                    setEditor(event.target.value);
+                  }}
                   rows={12}
                 />
               </label>
@@ -696,7 +718,7 @@ export default function App() {
             ) : (
               <div className="evidence-grid">
                 {pack.evidence.map((record) => {
-                  const attachment = attachments[record.id];
+                  const attachment = getAttachment(attachments, record.id);
                   return (
                     <article className="evidence-card" key={record.id}>
                       <div className="evidence-card-top">
