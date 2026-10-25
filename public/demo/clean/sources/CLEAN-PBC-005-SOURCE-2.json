@@ -1,0 +1,41 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-005-SOURCE-2",
+    "kind": "other",
+    "pbcCode": "PBC-005",
+    "sourceSystem": "ERP fixed-assets module",
+    "originalFilename": "CLEAN-PBC-005-SOURCE-2.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-PBC-005-SOURCE-2-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "area": "Fixed asset roll-forward and additions",
+    "scenario": {
+      "openingCost": "200000.00",
+      "additions": "30000.00",
+      "disposals": "10000.00",
+      "closingCost": "220000.00",
+      "openingAccumulatedDepreciation": "80000.00",
+      "depreciationExpense": "2000.00",
+      "depreciationOnDisposals": "5000.00",
+      "closingAccumulatedDepreciation": "77000.00",
+      "netBookValue": "143000.00",
+      "method": "Straight line",
+      "additionInService": "2025-12-01"
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

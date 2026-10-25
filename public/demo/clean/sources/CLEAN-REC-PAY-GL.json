@@ -1,0 +1,44 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "REC-PAY-GL",
+    "kind": "gl",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "ERP cash module",
+    "originalFilename": "CLEAN-REC-PAY-GL.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-REC-PAY-GL-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=PAYROLL-002",
+    "entity": "DEMOCO",
+    "account": "PAYROLL-002",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Sam Ellis - GL accounting (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Jamie Brooks - Controller (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "50000.00",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "openingBalance": "50000.00",
+    "journals": [
+      {
+        "date": "2025-12-15",
+        "reference": "DEMO-JE-201",
+        "debit": "0.00",
+        "credit": "2000.00",
+        "description": "Payment included in bank statement"
+      },
+      {
+        "date": "2025-12-29",
+        "reference": "DEMO-JE-202",
+        "debit": "2000.00",
+        "credit": "0.00",
+        "description": "Deposit in transit; clears 2026-01-02"
+      }
+    ],
+    "closingBalance": "50000.00"
+  }
+}

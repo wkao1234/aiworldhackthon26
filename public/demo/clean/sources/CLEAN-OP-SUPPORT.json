@@ -1,0 +1,32 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "OP-SUPPORT",
+    "kind": "other",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "Treasury management system",
+    "originalFilename": "CLEAN-OP-SUPPORT.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-OP-SUPPORT-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=OPERATING-001",
+    "entity": "DEMOCO",
+    "account": "OPERATING-001",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "check": "DEMO-1042",
+    "payee": "Fictional Delta Supplies",
+    "amount": "2500.00",
+    "issued": "2025-12-20",
+    "cleared": "2026-01-03",
+    "periodEndStatus": "Outstanding"
+  }
+}

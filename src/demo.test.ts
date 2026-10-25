@@ -11,6 +11,61 @@ const root = join(process.cwd(), "public", "demo");
 afterEach(() => vi.unstubAllGlobals());
 
 describe("downloadable synthetic dataset", () => {
+  it("accepts the complete clean scenario and passes every check with its actual evidence files", async () => {
+    const cleanRoot = join(root, "clean");
+    const json = await readFile(
+      join(cleanRoot, "demo-pack-clean.json"),
+      "utf8",
+    );
+    expect(json.length).toBeLessThan(60_000);
+    const parsed = parsePackJson(json);
+    expect(parsed.errors).toEqual([]);
+    const pack = parsed.data!;
+    expect(pack.demo).toBe(true);
+    expect(pack.reconciliations).toHaveLength(3);
+    expect(pack.evidence).toHaveLength(45);
+    expect(pack.pbcAssessments).toHaveLength(51);
+    const attachments: Record<string, Attachment> = {};
+    for (const record of pack.evidence) {
+      const bytes = await readFile(
+        join(cleanRoot, "sources", record.originalFilename),
+      );
+      const sha256 = createHash("sha256").update(bytes).digest("hex");
+      expect(sha256).toBe(record.declaredSha256);
+      expect(JSON.parse(bytes.toString()).classification).toBe(
+        "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+      );
+      attachments[record.id] = {
+        name: record.originalFilename,
+        sha256,
+        capturedAt: "2026-10-25T23:00:00Z",
+        size: bytes.length,
+      };
+    }
+    const snapshot = createSnapshot(
+      pack,
+      attachments,
+      "CLEAN-DEMO-TEST",
+      "2026-10-25T23:00:00Z",
+    );
+    expect(
+      snapshot.checks.filter((check) => check.result !== "Passed"),
+    ).toEqual([]);
+    expect(Object.values(snapshot.criterionResults)).toEqual(
+      Array(57).fill("Passed"),
+    );
+    expect(Object.values(snapshot.coverage)).toEqual(Array(10).fill("Passed"));
+    // Structured input alone must not manufacture evidence attachments.
+    expect(
+      createSnapshot(
+        pack,
+        {},
+        "CLEAN-NO-FILES",
+        "2026-10-25T23:00:00Z",
+      ).checks.some((check) => check.result === "Needs evidence"),
+    ).toBe(true);
+  });
+
   it("validates every source hash and demonstrates the expected passes and exceptions", async () => {
     const importJson = await readFile(join(root, "demo-pack.json"), "utf8");
     expect(importJson.length).toBeLessThan(60_000);

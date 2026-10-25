@@ -1,0 +1,45 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-009-SOURCE-2",
+    "kind": "other",
+    "pbcCode": "PBC-009",
+    "sourceSystem": "ERP security",
+    "originalFilename": "CLEAN-PBC-009-SOURCE-2.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-PBC-009-SOURCE-2-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "area": "Financial-system user-access review",
+    "scenario": {
+      "users": [
+        {
+          "id": "DEMO-U001",
+          "hrStatus": "Active",
+          "privileged": true
+        },
+        {
+          "id": "DEMO-U002",
+          "hrStatus": "Terminated",
+          "terminationDate": "2025-12-15",
+          "removedDate": "2025-12-15",
+          "ticket": "DEMO-IAM-22"
+        }
+      ],
+      "controlOutcome": "DEMO-U002 access removed on termination date; no delayed removal."
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}
