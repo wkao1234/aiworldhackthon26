@@ -1,0 +1,50 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "REC-RES-REC",
+    "kind": "reconciliation",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "Treasury management system",
+    "originalFilename": "CLEAN-REC-RES-REC.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "CLEAN-REC-RES-REC-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=RESERVE-003",
+    "entity": "DEMOCO",
+    "account": "RESERVE-003",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "id": "REC-RES",
+    "entity": "DEMOCO",
+    "account": "RESERVE-003",
+    "currency": "USD",
+    "period": "2025-12",
+    "reference": "CLEAN-REC-RES",
+    "bankClosingBalance": "75000.00",
+    "bankAdjustments": "0.00",
+    "adjustedBankBalance": "75000.00",
+    "glClosingBalance": "75000.00",
+    "reconciliationBalance": "75000.00",
+    "outstandingItems": [],
+    "outstandingPopulationConfirmed": true,
+    "evidenceIds": {
+      "reconciliation": "REC-RES-REC",
+      "bank": "REC-RES-BANK",
+      "gl": "REC-RES-GL"
+    },
+    "preparedBy": "Alex Morgan (fictional)",
+    "preparedAt": "2026-01-06",
+    "reviewedBy": "Taylor Chen (fictional)",
+    "reviewedAt": "2026-01-07",
+    "reviewSignoffEvidenceId": "REC-RES-SIGNOFF",
+    "owner": "Morgan Patel - Treasury (fictional)"
+  }
+}

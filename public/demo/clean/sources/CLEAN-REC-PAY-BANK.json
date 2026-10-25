@@ -1,0 +1,36 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "REC-PAY-BANK",
+    "kind": "bank",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "bank portal",
+    "originalFilename": "CLEAN-REC-PAY-BANK.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-REC-PAY-BANK-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=PAYROLL-002",
+    "entity": "DEMOCO",
+    "account": "PAYROLL-002",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Casey Rivera - Bank reporting (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Jordan Lee - Bank control (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "48000.00",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "institution": "Fictional Harbor Bank",
+    "openingBalance": "50000.00",
+    "transactions": [
+      {
+        "date": "2025-12-15",
+        "reference": "DEMO-PAYMENT",
+        "amount": "-2000.00"
+      }
+    ],
+    "closingBalance": "48000.00"
+  }
+}

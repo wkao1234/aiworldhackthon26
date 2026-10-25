@@ -1,0 +1,31 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PAY-SUPPORT",
+    "kind": "other",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "Treasury management system",
+    "originalFilename": "CLEAN-PAY-SUPPORT.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "CLEAN-PAY-SUPPORT-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=PAYROLL-002",
+    "entity": "DEMOCO",
+    "account": "PAYROLL-002",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "deposit": "DEMO-DEP-002",
+    "amount": "2000.00",
+    "recorded": "2025-12-29",
+    "cleared": "2026-01-02",
+    "periodEndStatus": "Deposit in transit"
+  }
+}

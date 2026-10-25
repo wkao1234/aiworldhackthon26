@@ -1,0 +1,37 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "PBC-001-SOURCE-2",
+    "kind": "other",
+    "pbcCode": "PBC-001",
+    "sourceSystem": "consolidation and reporting tool",
+    "originalFilename": "CLEAN-PBC-001-SOURCE-2.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-PBC-001-SOURCE-2-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-16T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-14",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-15",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "area": "Trial balance and financial statement mapping",
+    "scenario": {
+      "trialBalanceDebits": "1250000.00",
+      "trialBalanceCredits": "1250000.00",
+      "unmappedAccounts": 0,
+      "entities": [
+        "DEMOCO"
+      ],
+      "reportingPack": "DEMO-FS-202512"
+    },
+    "assuranceBasis": "Simulated human assessment for demonstration; no real review performed."
+  }
+}

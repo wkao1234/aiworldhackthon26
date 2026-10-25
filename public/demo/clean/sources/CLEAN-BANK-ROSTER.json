@@ -1,0 +1,44 @@
+{
+  "classification": "SYNTHETIC DEMO - NOT AUDIT EVIDENCE",
+  "provenance": {
+    "id": "BANK-ROSTER",
+    "kind": "other",
+    "pbcCode": "PBC-002",
+    "sourceSystem": "Treasury management system",
+    "originalFilename": "CLEAN-BANK-ROSTER.json",
+    "version": "SYNTHETIC-CLEAN-v1",
+    "recordId": "DEMO-BANK-ROSTER-202512",
+    "reportParameters": "SYNTHETIC; entity=DEMOCO; period=2025-12; currency=USD; account=ALL",
+    "entity": "DEMOCO",
+    "account": "",
+    "currency": "USD",
+    "period": "2025-12",
+    "extractedAt": "2026-01-08T10:00:00Z",
+    "sourcePreparer": "Alex Morgan (fictional)",
+    "sourcePreparedAt": "2026-01-06",
+    "sourceReviewer": "Taylor Chen (fictional)",
+    "sourceReviewedAt": "2026-01-07",
+    "sourceBalance": "",
+    "limitations": "Fictional demo export and identities; no live connection or real audit evidence."
+  },
+  "data": {
+    "accounts": [
+      {
+        "account": "OPERATING-001",
+        "material": true,
+        "status": "Active"
+      },
+      {
+        "account": "PAYROLL-002",
+        "material": true,
+        "status": "Active"
+      },
+      {
+        "account": "RESERVE-003",
+        "material": true,
+        "status": "Active"
+      }
+    ],
+    "completeness": "All three listed material accounts have matching reconciliations and source files."
+  }
+}
