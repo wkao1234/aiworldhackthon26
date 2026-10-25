@@ -62,7 +62,14 @@ values=["DEMOCO; December 2025; USD; all 10 supplied PBC areas","Three material 
 pack["metadata"] = {meta[f"A{r}"]:value for r,value in zip(range(2,19),values)}
 pack["metadata"]["Extraction timestamp"] = "Bank sources: 2026-01-08T10:00:00Z; nonbank sources: 2026-01-16T10:00:00Z; separate from browser capture"
 pack["metadata"]["Preparation and review dates"] = "Bank prepared/reviewed 2026-01-06/07; nonbank prepared/reviewed 2026-01-14/15; simulated assessments 2026-01-17"
-(OUT / "demo-pack.json").write_text(json.dumps(pack, indent=2, ensure_ascii=False)+"\n",encoding="utf-8",newline="\n")
+# Compact formatting and remove repeated guidance already present in the README.
+for assessment in pack["pbcAssessments"]:
+    if assessment["result"] == "Passed":
+        assessment["note"] = assessment["note"].replace("SYNTHETIC assessment only: ", "SIMULATED: ").replace(" See matching fictional source exports.", "")
+pack_json = json.dumps(pack, separators=(",", ":"), ensure_ascii=False) + "\n"
+if len(pack_json) >= 60_000 or len(pack_json.encode("utf-8")) >= 60_000:
+    raise ValueError("Demo import JSON must remain below 60,000 characters and bytes.")
+(OUT / "demo-pack.json").write_text(pack_json, encoding="utf-8", newline="\n")
 readme = f"""# AuditPack synthetic demo dataset
 
 {marker}
@@ -75,6 +82,8 @@ The source workbook is a requirements catalog, not evidence. This dataset does n
 Open AuditPack and select **Explore synthetic demo**. The app loads this JSON and all {len(pack['evidence'])} actual mock source files, hashes their bytes locally, and labels the pack synthetic. Export PDF and XLSX from the same snapshot. The final reviewer signoff remains blank.
 
 For a manual import, choose demo-pack.json, then attach each file in sources/ to the evidence ID matching its filename. JSON import alone intentionally clears attachments. Reloading the browser clears working data.
+
+demo-pack.json is compact JSON: {len(pack_json):,} characters, below the 60,000-character limit. All 40 source references, 51 simulated assessments, 17 metadata fields and deliberate exceptions remain included. The app formats it for reading after import.
 
 ## Expected walkthrough
 
@@ -100,4 +109,4 @@ with ZipFile(OUT / "ledgerline-demo-dataset.zip", "w", ZIP_DEFLATED) as archive:
         info=ZipInfo(path.relative_to(OUT).as_posix(), (2026,1,17,12,0,0))
         info.compress_type=ZIP_DEFLATED
         archive.writestr(info,path.read_bytes())
-print(f"Generated {len(pack['evidence'])} source files, {len(pack['pbcAssessments'])} simulated assessments and demo ZIP.")
+print(f"Generated {len(pack['evidence'])} source files, {len(pack['pbcAssessments'])} simulated assessments, {len(pack_json):,}-character import JSON and demo ZIP.")

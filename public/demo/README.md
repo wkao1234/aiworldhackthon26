@@ -11,6 +11,8 @@ Open AuditPack and select **Explore synthetic demo**. The app loads this JSON an
 
 For a manual import, choose demo-pack.json, then attach each file in sources/ to the evidence ID matching its filename. JSON import alone intentionally clears attachments. Reloading the browser clears working data.
 
+demo-pack.json is compact JSON: 58,576 characters, below the 60,000-character limit. All 40 source references, 51 simulated assessments, 17 metadata fields and deliberate exceptions remain included. The app formats it for reading after import.
+
 ## Expected walkthrough
 
 1. OPERATING-001: bank 102,500 less outstanding check 2,500 equals GL 100,000. Matching source files, support and independent simulated review are present.
