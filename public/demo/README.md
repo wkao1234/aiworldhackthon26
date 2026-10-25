@@ -1,4 +1,4 @@
-# Ledgerline synthetic demo dataset
+# AuditPack synthetic demo dataset
 
 SYNTHETIC DEMO - NOT AUDIT EVIDENCE
 
@@ -7,7 +7,7 @@ The source workbook is a requirements catalog, not evidence. This dataset does n
 
 ## Fast demo
 
-Open Ledgerline and select **Explore synthetic demo**. The app loads this JSON and all 40 actual mock source files, hashes their bytes locally, and labels the pack synthetic. Export PDF and XLSX from the same snapshot. The final reviewer signoff remains blank.
+Open AuditPack and select **Explore synthetic demo**. The app loads this JSON and all 40 actual mock source files, hashes their bytes locally, and labels the pack synthetic. Export PDF and XLSX from the same snapshot. The final reviewer signoff remains blank.
 
 For a manual import, choose demo-pack.json, then attach each file in sources/ to the evidence ID matching its filename. JSON import alone intentionally clears attachments. Reloading the browser clears working data.
 

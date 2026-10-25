@@ -63,7 +63,7 @@ pack["metadata"] = {meta[f"A{r}"]:value for r,value in zip(range(2,19),values)}
 pack["metadata"]["Extraction timestamp"] = "Bank sources: 2026-01-08T10:00:00Z; nonbank sources: 2026-01-16T10:00:00Z; separate from browser capture"
 pack["metadata"]["Preparation and review dates"] = "Bank prepared/reviewed 2026-01-06/07; nonbank prepared/reviewed 2026-01-14/15; simulated assessments 2026-01-17"
 (OUT / "demo-pack.json").write_text(json.dumps(pack, indent=2, ensure_ascii=False)+"\n",encoding="utf-8",newline="\n")
-readme = f"""# Ledgerline synthetic demo dataset
+readme = f"""# AuditPack synthetic demo dataset
 
 {marker}
 
@@ -72,7 +72,7 @@ The source workbook is a requirements catalog, not evidence. This dataset does n
 
 ## Fast demo
 
-Open Ledgerline and select **Explore synthetic demo**. The app loads this JSON and all {len(pack['evidence'])} actual mock source files, hashes their bytes locally, and labels the pack synthetic. Export PDF and XLSX from the same snapshot. The final reviewer signoff remains blank.
+Open AuditPack and select **Explore synthetic demo**. The app loads this JSON and all {len(pack['evidence'])} actual mock source files, hashes their bytes locally, and labels the pack synthetic. Export PDF and XLSX from the same snapshot. The final reviewer signoff remains blank.
 
 For a manual import, choose demo-pack.json, then attach each file in sources/ to the evidence ID matching its filename. JSON import alone intentionally clears attachments. Reloading the browser clears working data.
 
