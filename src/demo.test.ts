@@ -12,9 +12,9 @@ afterEach(() => vi.unstubAllGlobals());
 
 describe("downloadable synthetic dataset", () => {
   it("validates every source hash and demonstrates the expected passes and exceptions", async () => {
-    const parsed = parsePackJson(
-      await readFile(join(root, "demo-pack.json"), "utf8"),
-    );
+    const importJson = await readFile(join(root, "demo-pack.json"), "utf8");
+    expect(importJson.length).toBeLessThan(60_000);
+    const parsed = parsePackJson(importJson);
     expect(parsed.errors).toEqual([]);
     const pack = parsed.data!;
     expect(pack.demo).toBe(true);
