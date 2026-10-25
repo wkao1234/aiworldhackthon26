@@ -536,7 +536,7 @@ function addSheet(
 
 export async function buildXlsx(snapshot: Snapshot): Promise<Uint8Array> {
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = "Ledgerline Audit Pack Studio";
+  workbook.creator = "AuditPack";
   workbook.created = new Date(snapshot.timestamp);
   const assurance = counts(
     criteria.map((row) => snapshot.criterionResults[row.id]),

@@ -332,12 +332,12 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="Ledgerline home">
+        <a className="brand" href="#top" aria-label="AuditPack home">
           <span className="brand-mark">
-            L<span>•</span>
+            A<span>•</span>
           </span>
           <span>
-            ledgerline <em>/ audit studio</em>
+            AuditPack <em>/ audit studio</em>
           </span>
         </a>
         <div className="topbar-right">
@@ -1223,7 +1223,7 @@ export default function App() {
             </div>
           </section>
           <footer>
-            <span>LEDGERLINE / AUDIT STUDIO</span>
+            <span>AuditPack / AUDIT STUDIO</span>
             <span>
               Requirements source: {sourceWorkbook} ·{" "}
               {workbookHash.slice(0, 12)}…
