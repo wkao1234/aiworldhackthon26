@@ -62,7 +62,7 @@ values=["DEMOCO; December 2025; USD; all 10 supplied PBC areas","Three material 
 pack["metadata"] = {meta[f"A{r}"]:value for r,value in zip(range(2,19),values)}
 pack["metadata"]["Extraction timestamp"] = "Bank sources: 2026-01-08T10:00:00Z; nonbank sources: 2026-01-16T10:00:00Z; separate from browser capture"
 pack["metadata"]["Preparation and review dates"] = "Bank prepared/reviewed 2026-01-06/07; nonbank prepared/reviewed 2026-01-14/15; simulated assessments 2026-01-17"
-(OUT / "demo-pack.json").write_text(json.dumps(pack, indent=2, ensure_ascii=False)+"\n",encoding="utf-8")
+(OUT / "demo-pack.json").write_text(json.dumps(pack, indent=2, ensure_ascii=False)+"\n",encoding="utf-8",newline="\n")
 readme = f"""# Ledgerline synthetic demo dataset
 
 {marker}
@@ -90,9 +90,9 @@ Source evidence uses JSON for transparent inspection. The app does not parse arb
 
 Run python scripts/generate_demo.py. It regenerates the pack, source JSON files and ZIP deterministically. Final exports use their actual generation/capture time, separately from fictional source dates.
 """
-(OUT / "README.md").write_text(readme,encoding="utf-8")
+(OUT / "README.md").write_text(readme,encoding="utf-8",newline="\n")
 manifest={r["id"]:{"file":f"sources/{r['originalFilename']}","sha256":r["declaredSha256"]} for r in pack["evidence"]}
-(OUT / "manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8")
+(OUT / "manifest.json").write_text(json.dumps(manifest,indent=2)+"\n",encoding="utf-8",newline="\n")
 from zipfile import ZipInfo
 with ZipFile(OUT / "ledgerline-demo-dataset.zip", "w", ZIP_DEFLATED) as archive:
     paths=[OUT / "README.md",OUT / "demo-pack.json",OUT / "manifest.json"]+[SOURCES / r["originalFilename"] for r in pack["evidence"]]
