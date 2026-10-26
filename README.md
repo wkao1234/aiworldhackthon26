@@ -4,6 +4,8 @@ Repository: https://github.com/wkao1234/aiworldhackthon26
 
 This browser app builds a bank reconciliation working pack PDF and a summary XLSX from user-supplied structured data and attached source files. It loads the supplied PBC workbook as a **requirements catalog**, not as transaction evidence. The 10 PBC requests, 57 individual assurance statements, and 17 metadata fields remain visible in both exports.
 
+Live app: https://aiworldhackthon26.vercel.app/ — no account or API key required. Start with **Try the demo**, choose the exception or clean scenario, inspect the findings, then export both deliverables. See the [judging requirements map](docs/judging-requirements.md) and [submission draft](docs/hackathon-submission.md) for the photographed rubric, demo proof, and remaining validation gaps.
+
 ## Run locally
 
 Requirements: Node.js 20.19+ or 22.12+ and npm.
@@ -28,7 +30,9 @@ Import this GitHub repository into Vercel. Use the Vite preset or set build comm
 5. Review the check ledger and PBC criteria. For nonbank criteria, record a separate human assessment for each statement with checker, date, source evidence IDs, and notes. A single whole-PBC assertion cannot mark all statements passed.
 6. Download the PDF and XLSX from the same current pack snapshot. Any edit changes the shared pack ID and snapshot timestamp. Reviewer signoff fields remain blank until an actual reviewer fills them.
 
-The optional synthetic demo is explicitly marked in the UI and both exports. **Explore synthetic demo** loads 40 actual fictional source JSON files, validates their SHA-256 hashes, and populates all 17 metadata fields plus 51 simulated human assessments for the nonbank PBC areas. **Download demo dataset** provides the import JSON, source files, hash manifest, and walkthrough in a ZIP. **Clear demo** removes all demo working data and attachments.
+The optional synthetic demos are explicitly marked in the UI and both exports. **Load exception demo** loads 40 actual fictional source JSON files; **Load clean demo** loads 45. Both validate the files' SHA-256 hashes and populate all 17 metadata fields plus 51 simulated human assessments for the nonbank PBC areas. Each scenario has a ZIP containing the import JSON, source files, hash manifest, and walkthrough. Both input JSON files are below 60,000 characters. **Clear demo** removes all demo working data and attachments.
+
+The clean scenario contains three reconciliations and passes all 156 checks and 57 criteria with its matching files attached. The interface labels this **Ready for reviewer**, with signoff still pending; this is neither an authenticated source review nor an audit opinion. The **How it works** panel explains the deterministic engine, human assessments, local file handling, AI-assisted development, and what a future version needs to prove. The deployed application does not call a runtime AI model.
 
 The mock dataset deliberately contains a USD 100 payroll reconciliation difference, an unsupported 91-day-old reconciling item, a self-review, a missing reserve-account reconciliation, and late removal of a fictional employee's access. Operating cash provides the supported matching example. All identities and source exports are fictional; nonbank assessments are simulated human decisions, not real audit conclusions. See [demo instructions](public/demo/README.md). Rebuild the deterministic dataset with `python scripts/generate_demo.py`.
 

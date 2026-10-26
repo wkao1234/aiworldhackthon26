@@ -17,7 +17,7 @@ import {
   type Result,
 } from "./model";
 import { templatePack } from "./sample";
-import { loadDemoDataset } from "./demo";
+import { loadDemoDataset, type DemoScenario } from "./demo";
 
 const identity = () => ({
   id: `AP-${new Date().toISOString().slice(0, 10).replaceAll("-", "")}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`,
@@ -124,6 +124,17 @@ export default function App() {
         .includes(query.toLowerCase()),
   );
   const attachedCount = Object.keys(attachments).length;
+  const passedCount = counts.find(({ result }) => result === "Passed")!.count;
+  const allChecksPassed =
+    snapshot.checks.length > 0 && passedCount === snapshot.checks.length;
+  const packStatus =
+    counts[0].count > 0
+      ? "Exceptions found"
+      : attachedCount === 0
+        ? "Awaiting evidence"
+        : allChecksPassed
+          ? "Ready for reviewer"
+          : "In assessment";
 
   function commit(next: PackInput, clearAttachments = false) {
     inputGeneration.current += 1;
@@ -304,19 +315,21 @@ export default function App() {
     );
   }
 
-  async function exploreDemo() {
+  async function exploreDemo(scenario: DemoScenario) {
     const generation = ++inputGeneration.current;
     const loadVersion = ++demoLoadVersion.current;
     setDemoLoading(true);
     setErrors([]);
     try {
-      const demo = await loadDemoDataset();
+      const demo = await loadDemoDataset(scenario);
       if (generation !== inputGeneration.current) return;
       commit(demo.pack, true);
       fileStore.current = demo.files;
       setAttachments(demo.attachments);
+      setFilter("All");
+      setQuery("");
       setNotice(
-        `Synthetic demo loaded with ${demo.pack.evidence.length} hashed mock source files. Review the deliberate exceptions, then export PDF and XLSX.`,
+        `${scenario === "clean" ? "Clean" : "Exception"} synthetic demo loaded with ${demo.pack.evidence.length} hashed mock source files. Inspect the check ledger, then export PDF and XLSX. Reviewer signoff remains blank.`,
       );
     } catch (error) {
       if (generation !== inputGeneration.current) return;
@@ -396,44 +409,38 @@ export default function App() {
                 <i>a story to prove.</i>
               </h1>
               <p className="hero-text">
-                Build a traceable bank reconciliation pack from structured
-                source data, attached evidence, and an explicit
-                criterion-by-criterion check ledger.
+                For accounting preparers, controllers, and audit reviewers: turn
+                scattered reconciliation records into one traceable PDF and a
+                check-by-check summary workbook.
               </p>
               <div className="hero-actions">
-                <a className="button primary" href="#intake">
-                  Start an audit pack <span>→</span>
+                <a className="button primary" href="#demo">
+                  Try the demo <span>→</span>
                 </a>
-                <button
-                  className="button secondary"
-                  onClick={exploreDemo}
-                  disabled={Boolean(busy) || demoLoading}
-                >
-                  {demoLoading
-                    ? "Loading mock sources…"
-                    : "Explore synthetic demo"}{" "}
-                  <span>↗</span>
-                </button>
-                <a
-                  className="button secondary"
-                  href={`${import.meta.env.BASE_URL}demo/ledgerline-demo-dataset.zip`}
-                  download
-                >
-                  Download demo dataset <span>↓</span>
+                <a className="button secondary" href="#intake">
+                  Use your own inputs <span>↗</span>
                 </a>
               </div>
+              <p className="hero-caption">
+                No login needed · Synthetic examples · Files stay in your
+                browser
+              </p>
             </div>
             <div className="hero-art" aria-hidden="true">
               <div className="art-card art-back">
-                <span>GL / CASH</span>
-                <strong>—</strong>
-                <small>SOURCE AMOUNT PENDING</small>
+                <span>SOURCE FILES</span>
+                <strong>
+                  {attachedCount} / {pack.evidence.length || "—"}
+                </strong>
+                <small>ATTACHED / REGISTERED</small>
               </div>
               <div className="art-card art-front">
                 <div className="art-dot" />
-                <span>RECONCILIATION</span>
-                <strong>EVIDENCE PENDING</strong>
-                <small>PROVENANCE REQUIRED</small>
+                <span>CHECK LEDGER</span>
+                <strong>
+                  {attachedCount ? `${passedCount} PASSED` : "EVIDENCE PENDING"}
+                </strong>
+                <small>REVIEWER SIGNOFF REQUIRED</small>
               </div>
               <div className="art-grid" />
             </div>
@@ -442,8 +449,8 @@ export default function App() {
             <div className="demo-banner">
               <strong>◈ SYNTHETIC DEMO</strong>
               <span>
-                Fictional data and source files only. Includes deliberate
-                exceptions; all exports are marked synthetic.
+                Fictional data and source files only. Nonbank assessments are
+                simulated human entries; all exports are marked synthetic.
               </span>
               <button
                 onClick={() => {
@@ -476,13 +483,7 @@ export default function App() {
           <section className="metrics" aria-label="Pack snapshot">
             <div className="metric">
               <span>PACK STATUS</span>
-              <strong className="status-display">
-                {snapshot.checks.some((check) => check.result === "Exception")
-                  ? "Exceptions found"
-                  : attachedCount === 0
-                    ? "Awaiting evidence"
-                    : "In assessment"}
-              </strong>
+              <strong className="status-display">{packStatus}</strong>
               <small>No audit opinion is implied</small>
             </div>
             <div className="metric">
@@ -505,6 +506,195 @@ export default function App() {
               <strong>{criteria.length}</strong>
               <small>Across all 10 PBC requests</small>
             </div>
+          </section>
+
+          <section id="demo" className="page-section demo-section">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">A WORKING DEMO, FROM INPUT TO SIGNOFF</p>
+                <h2>Follow the evidence.</h2>
+                <p>
+                  Choose a fictional scenario. Its JSON and source files load
+                  together, so you can verify the complete workflow without
+                  setting up an account.
+                </p>
+              </div>
+            </div>
+            <div className="workflow-comparison">
+              <p>
+                <strong>Before</strong> Chase bank, GL, and reconciliation
+                files; cross-check balances; assemble evidence and reviewer
+                notes by hand.
+              </p>
+              <span aria-hidden="true">→</span>
+              <p>
+                <strong>With AuditPack</strong> Validate structured inputs,
+                trace each check to its source, and export both deliverables
+                from the same snapshot.
+              </p>
+            </div>
+            <div className="scenario-grid">
+              <article className="scenario-card">
+                <span className="scenario-tag">01 / FIND THE GAPS</span>
+                <h3>Exception scenario</h3>
+                <p>
+                  Find a $100 payroll mismatch, an overdue unsupported item,
+                  self-review, and a missing reserve reconciliation.
+                </p>
+                <small>
+                  40 mock source files · 2 of 3 account reconciliations
+                </small>
+                <button
+                  className="button dark"
+                  disabled={Boolean(busy) || demoLoading}
+                  onClick={() => void exploreDemo("exceptions")}
+                >
+                  {demoLoading
+                    ? "Loading mock sources…"
+                    : "Load exception demo"}
+                </button>
+                <a
+                  className="text-link"
+                  href={`${import.meta.env.BASE_URL}demo/ledgerline-demo-dataset.zip`}
+                  download
+                >
+                  Download exception inputs ↓
+                </a>
+              </article>
+              <article className="scenario-card clean-scenario">
+                <span className="scenario-tag">
+                  02 / SEE THE RESOLVED EXAMPLE
+                </span>
+                <h3>Clean scenario</h3>
+                <p>
+                  Compare a fully supported example with matching balances,
+                  independent source review, and all three accounts present.
+                </p>
+                <small>
+                  45 mock source files · 3 of 3 account reconciliations
+                </small>
+                <button
+                  className="button primary"
+                  disabled={Boolean(busy) || demoLoading}
+                  onClick={() => void exploreDemo("clean")}
+                >
+                  {demoLoading ? "Loading mock sources…" : "Load clean demo"}
+                </button>
+                <a
+                  className="text-link"
+                  href={`${import.meta.env.BASE_URL}demo/clean/auditpack-clean-dataset.zip`}
+                  download
+                >
+                  Download clean inputs ↓
+                </a>
+              </article>
+            </div>
+            <p className="demo-help">
+              Loading a scenario replaces the current working pack. Both
+              examples include 51 simulated human assessments for nonbank
+              criteria. A passed check is not an audit approval.
+            </p>
+            <ol className="demo-steps" aria-label="Demo walkthrough">
+              <li>
+                <span>1</span>
+                <div>
+                  <strong>Load a scenario</strong>
+                  <p>
+                    Every source file is hashed and checked against its declared
+                    SHA-256.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>2</span>
+                <div>
+                  <a
+                    href="#checks"
+                    onClick={() => {
+                      setFilter("All");
+                      setQuery("");
+                    }}
+                  >
+                    Inspect the check ledger ↗
+                  </a>
+                  <p>
+                    Read results, possible reasons, and linked source
+                    footprints.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>3</span>
+                <div>
+                  <a href="#exports">Export PDF + XLSX ↗</a>
+                  <p>
+                    Matching snapshot IDs, full PBC coverage, and blank final
+                    reviewer signoff.
+                  </p>
+                </div>
+              </li>
+            </ol>
+            {pack.evidence.length > 0 && (
+              <div className="demo-results" aria-label="Current check results">
+                <strong>Current pack</strong>
+                {counts.map(({ result, count }) => (
+                  <a
+                    key={result}
+                    href="#checks"
+                    className={`result-link ${tone(result)}`}
+                    onClick={() => {
+                      setFilter(result);
+                      setQuery("");
+                    }}
+                  >
+                    {count} {result.toLowerCase()} ↗
+                  </a>
+                ))}
+                <a className="text-link" href="#evidence">
+                  Inspect source footprints ↗
+                </a>
+              </div>
+            )}
+            <details className="how-it-works">
+              <summary>How it works, AI use, and what comes next</summary>
+              <div className="how-it-works-grid">
+                <div>
+                  <h3>A traceable workflow</h3>
+                  <p>
+                    React and TypeScript validate the JSON, calculate bank
+                    checks in integer cents, and hash source files locally.
+                    jsPDF and ExcelJS generate both deliverables. The 10 PBC
+                    requests, 57 criteria, and 17 metadata fields come from the
+                    supplied workbook.
+                  </p>
+                </div>
+                <div>
+                  <h3>Human judgment stays visible</h3>
+                  <p>
+                    Codex assisted development and review. This version uses
+                    deterministic checks, not a runtime AI model. Nonbank
+                    conclusions are explicit human assessments. Source names and
+                    timestamps are declarations; matching hashes prove byte
+                    consistency, not authenticity.
+                  </p>
+                </div>
+                <div>
+                  <h3>The next proof</h3>
+                  <p>
+                    A pilot would measure preparation time, reviewer rework, and
+                    missed exceptions against the current workflow.
+                    Authenticated source connectors and grounded AI assistance
+                    are future work. No customer adoption or time savings have
+                    been measured.
+                  </p>
+                </div>
+              </div>
+              <p className="demo-help">
+                No live bank or GL connection. Attachments are not parsed
+                automatically. Working data remains in this tab and clears on
+                reload; download the outputs before leaving.
+              </p>
+            </details>
           </section>
 
           <section id="intake" className="page-section">
@@ -756,7 +946,11 @@ export default function App() {
                 {pack.evidence.map((record) => {
                   const attachment = getAttachment(attachments, record.id);
                   return (
-                    <article className="evidence-card" key={record.id}>
+                    <article
+                      className="evidence-card"
+                      id={`evidence-${record.id}`}
+                      key={record.id}
+                    >
                       <div className="evidence-card-top">
                         <span className="record-kind">
                           {record.kind.toUpperCase()}
@@ -917,7 +1111,26 @@ export default function App() {
                         </td>
                         <td>
                           {check.evidenceIds.length ? (
-                            check.evidenceIds.join(", ")
+                            check.evidenceIds.map((id) =>
+                              pack.evidence.some(
+                                (record) => record.id === id,
+                              ) ? (
+                                <a
+                                  className="evidence-reference"
+                                  key={id}
+                                  href={`#${encodeURIComponent(`evidence-${id}`)}`}
+                                >
+                                  {id} ↗
+                                </a>
+                              ) : (
+                                <span
+                                  className="evidence-reference muted"
+                                  key={id}
+                                >
+                                  {id} (not registered)
+                                </span>
+                              ),
+                            )
                           ) : (
                             <span className="muted">Missing</span>
                           )}
