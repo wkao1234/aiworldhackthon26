@@ -7,11 +7,24 @@ export interface DemoDataset {
   files: Record<string, File>;
 }
 
+export type DemoScenario = "exceptions" | "clean";
+
+const demoPaths: Record<DemoScenario, { pack: string; sources: string }> = {
+  exceptions: { pack: "demo/demo-pack.json", sources: "demo/sources" },
+  clean: {
+    pack: "demo/clean/demo-pack-clean.json",
+    sources: "demo/clean/sources",
+  },
+};
+
 /** Load real, explicitly synthetic files and hash their bytes, just like uploads. */
-export async function loadDemoDataset(): Promise<DemoDataset> {
-  const response = await fetch(
-    `${import.meta.env.BASE_URL}demo/demo-pack.json`,
-  );
+export async function loadDemoDataset(
+  scenario: DemoScenario = "exceptions",
+): Promise<DemoDataset> {
+  if (!Object.hasOwn(demoPaths, scenario))
+    throw new Error("Unknown demo scenario.");
+  const paths = demoPaths[scenario];
+  const response = await fetch(`${import.meta.env.BASE_URL}${paths.pack}`);
   if (!response.ok) throw new Error("The demo dataset could not be loaded.");
   const parsed = parsePackJson(await response.text());
   if (!parsed.data || !parsed.data.demo)
@@ -26,7 +39,7 @@ export async function loadDemoDataset(): Promise<DemoDataset> {
       if (!/^[A-Z0-9-]+\.json$/.test(record.originalFilename))
         throw new Error(`Invalid demo source filename for ${record.id}.`);
       const result = await fetch(
-        `${import.meta.env.BASE_URL}demo/sources/${record.originalFilename}`,
+        `${import.meta.env.BASE_URL}${paths.sources}/${record.originalFilename}`,
       );
       if (!result.ok)
         throw new Error(`Missing demo source ${record.originalFilename}.`);

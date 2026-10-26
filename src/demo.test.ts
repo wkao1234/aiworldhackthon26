@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createSnapshot } from "./checks";
-import { loadDemoDataset } from "./demo";
+import { loadDemoDataset, type DemoScenario } from "./demo";
 import { parsePackJson } from "./import";
 import { criteria, metadataFields, type Attachment } from "./model";
 
@@ -131,27 +131,57 @@ describe("downloadable synthetic dataset", () => {
     expect(snapshot.coverage["PBC-001"]).toBe("Passed");
   });
 
-  it("loads actual source bytes and rejects tampered demo evidence", async () => {
-    let tamper = false;
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async (url: string) => {
-        const relative = url.replace(/^.*?demo\//, "");
-        const bytes = await readFile(join(root, relative));
-        return new Response(
-          tamper && relative.includes("sources/")
-            ? "tampered"
-            : bytes.toString(),
+  it.each([
+    ["exceptions", 40],
+    ["clean", 45],
+  ] as const)(
+    "loads actual %s source bytes and rejects tampered evidence",
+    async (scenario, fileCount) => {
+      let tamper = false;
+      vi.stubGlobal(
+        "fetch",
+        vi.fn(async (url: string) => {
+          const relative = url.replace(/^.*?demo\//, "");
+          const bytes = await readFile(join(root, relative));
+          return new Response(
+            tamper && relative.includes("sources/")
+              ? "tampered"
+              : bytes.toString(),
+          );
+        }),
+      );
+      const loaded = await loadDemoDataset(scenario);
+      expect(Object.keys(loaded.files)).toHaveLength(fileCount);
+      expect(Object.keys(loaded.attachments)).toHaveLength(fileCount);
+      expect(await loaded.files["REC-OP-BANK"].text()).toContain(
+        "Fictional Harbor Bank",
+      );
+      if (scenario === "clean") {
+        const snapshot = createSnapshot(
+          loaded.pack,
+          loaded.attachments,
+          "CLEAN-LOADER",
+          "2026-10-25T23:00:00Z",
         );
-      }),
+        expect(
+          snapshot.checks.every((check) => check.result === "Passed"),
+        ).toBe(true);
+        expect(loaded.files["REC-OP-BANK"].name).toMatch(/^CLEAN-/);
+      }
+      tamper = true;
+      await expect(loadDemoDataset(scenario)).rejects.toThrow("hash mismatch");
+    },
+  );
+
+  it("rejects unknown scenarios before making a request", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(loadDemoDataset("../private" as DemoScenario)).rejects.toThrow(
+      "Unknown demo scenario",
     );
-    const loaded = await loadDemoDataset();
-    expect(Object.keys(loaded.files)).toHaveLength(40);
-    expect(Object.keys(loaded.attachments)).toHaveLength(40);
-    expect(await loaded.files["REC-OP-BANK"].text()).toContain(
-      "Fictional Harbor Bank",
+    await expect(loadDemoDataset("__proto__" as DemoScenario)).rejects.toThrow(
+      "Unknown demo scenario",
     );
-    tamper = true;
-    await expect(loadDemoDataset()).rejects.toThrow("hash mismatch");
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
